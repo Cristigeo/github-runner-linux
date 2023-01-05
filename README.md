@@ -1,6 +1,6 @@
 # github-runner-linux
 
-A simple, self-hosted GithubActions runner, as a Docker container.
+A simple, self-hosted Github Actions runner, as a Docker container.
 
 ## Build docker image
 
