@@ -1,6 +1,6 @@
 # base image
-FROM debian:bullseye-slim
-LABEL BaseImage="debian:bullseye-slim"
+FROM debian:bookworm-slim
+LABEL BaseImage="debian:bookworm-slim"
 LABEL RunnerVersion=${RUNNER_VERSION}
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -47,4 +47,5 @@ ADD scripts/start.sh start.sh
 RUN chmod +x start.sh
 
 # set the user to "ghrunner" from now on
-ENTRYPOINT chgrp docker /var/run/docker.sock && chmod 0775 /var/run/docker.sock && runuser -u ghrunner ./start.sh
+#ENTRYPOINT chgrp docker /var/run/docker.sock && chmod 0775 /var/run/docker.sock && runuser -u ghrunner ./start.sh
+ENTRYPOINT runuser -u ghrunner ./start.sh

@@ -4,10 +4,10 @@ A simple, self-hosted Github Actions runner, as a Docker container.
 
 ## Build docker image
 
-Run the following command, optionally specifying the desired github runner version / platform / architecture that will be installed (if ommited, will default to 2.308.0 / linux / x64):
+Run the following (or similar) command, optionally specifying the desired github runner version / platform / architecture that will be installed (if ommited, will default to 2.308.0 / linux / x64):
 
 ```
-docker build --build-arg RUNNER_VERSION=2.308.0 --build-arg RUNNER_PLATFORM=osx --build-arg RUNNER_ARCH=arm64 --tag my-gh-actions-runner-image .
+docker build --build-arg RUNNER_VERSION=2.308.0 --build-arg RUNNER_PLATFORM=linux --build-arg RUNNER_ARCH=arm64 --tag my-gh-actions-runner-image .
 ```
 
 ## Start docker container
