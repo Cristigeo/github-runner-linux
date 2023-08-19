@@ -29,13 +29,15 @@ RUN groupadd -g ${DOCKER_GID} docker && \
   useradd -m ghrunner && \
   usermod -a -G docker ghrunner
 
-# GitHub runner version argument, with default value
-ARG RUNNER_VERSION=2.299.1
+# GitHub runner version/platform/architecture arguments, with default values
+ARG RUNNER_VERSION=2.308.0
+ARG RUNNER_PLATFORM=linux
+ARG RUNNER_ARCH=x64
 
 # cd into the user directory, download and unzip the github actions runner
 RUN cd /home/ghrunner && mkdir actions-runner && cd actions-runner \
-  && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz \
-  && tar xzf ./actions-runner-linux-x64-${RUNNER_VERSION}.tar.gz
+  && curl -O -L https://github.com/actions/runner/releases/download/v${RUNNER_VERSION}/actions-runner-${RUNNER_PLATFORM}-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz \
+  && tar xzf ./actions-runner-${RUNNER_PLATFORM}-${RUNNER_ARCH}-${RUNNER_VERSION}.tar.gz
 
 # install github actions' specific additional dependencies
 RUN chown -R ghrunner ~ghrunner && /home/ghrunner/actions-runner/bin/installdependencies.sh
